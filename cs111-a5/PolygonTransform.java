@@ -35,14 +35,17 @@ public class PolygonTransform {
     
     // Translates the given polygon by (dx, dy). 
     public static void translate(double[] x, double[] y, double dx, double dy) {
-
-	// WRITE YOUR CODE HERE
+        for(int i = 0; i < x.length; i++){
+            x[i] = x[i] + dx;
+            y[i] = y[i] + dy;
+        }
     }
     
     // Rotates the given polygon theta degrees counterclockwise, about the origin. 
     public static void rotate(double[] x, double[] y, double theta) {
-
-	// WRITE YOUR CODE HERE
+        for(int i = 0; i < x.length; i++){
+            
+        }
     }
 
     // Tests each of the API methods by directly calling them. 
