@@ -2,7 +2,7 @@
  *  Compilation:  javac PolygonTransform.java
  *  Execution:    java PolygonTransform
  *
- *  @author:
+ *  @author: Victor Ochoa
  *
  *************************************************************************/
 
@@ -13,7 +13,14 @@ public class PolygonTransform {
     // The given array is not mutated. 
     public static double[] copy(double[] array) {
 
-	// WRITE YOUR CODE HERE
+        double[] copyOfArray = new double[array.length];
+
+        for(int i = 0; i < copyOfArray.length; i++){
+            copyOfArray[i] = array[i];
+        }
+
+        return copyOfArray;
+        
     }
     
     // Scales the given polygon by the factor alpha. 
