@@ -20,13 +20,17 @@ public class PolygonTransform {
         }
 
         return copyOfArray;
-        
+
     }
     
     // Scales the given polygon by the factor alpha. 
     public static void scale(double[] x, double[] y, double alpha) {
-
-	// WRITE YOUR CODE HERE
+        //Modifying array of x and y coordinates directly based on way test
+        // cases work
+        for(int i = 0; i < x.length; i++){
+            x[i] = alpha * x[i];
+            y[i] = alpha * y[i];
+        }
     }
     
     // Translates the given polygon by (dx, dy). 
