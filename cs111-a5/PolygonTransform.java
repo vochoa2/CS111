@@ -43,6 +43,8 @@ public class PolygonTransform {
     
     // Rotates the given polygon theta degrees counterclockwise, about the origin. 
     public static void rotate(double[] x, double[] y, double theta) {
+        //Transform theta into radians, as Math.cos and Math.sin take radians
+        theta = (theta) * (Math.PI / 180);
         for(int i = 0; i < x.length; i++){
             x[i] = x[i] * Math.cos(theta) - y[i] * Math.sin(theta);
             y[i] = y[i] * Math.cos(theta) + x[i] * Math.sin(theta);
@@ -59,14 +61,14 @@ public class PolygonTransform {
         StdDraw.setPenColor(StdDraw.RED);
         StdDraw.polygon(x, y);
         //scaling
-        scale(x, y, alpha);
-        StdDraw.setPenColor(StdDraw.BLUE);
-        StdDraw.polygon(x, y);
+        // scale(x, y, alpha);
+        // StdDraw.setPenColor(StdDraw.BLUE);
+        // StdDraw.polygon(x, y);
         //translating
-        double dx = 2.0, dy = 1.0;
-        translate(x, y, dx, dy);
-        StdDraw.setPenColor(StdDraw.GREEN);
-        StdDraw.polygon(x, y);
+        // double dx = 2.0, dy = 1.0;
+        // translate(x, y, dx, dy);
+        // StdDraw.setPenColor(StdDraw.GREEN);
+        // StdDraw.polygon(x, y);
         //rotating
         double theta = 45.0;
         scale(x, y, theta);
