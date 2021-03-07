@@ -45,9 +45,14 @@ public class PolygonTransform {
     public static void rotate(double[] x, double[] y, double theta) {
         //Transform theta into radians, as Math.cos and Math.sin take radians
         theta = (theta) * (Math.PI / 180);
+        //Need copy of original coordinates as rotation formulas reference original
+        // values but change them as well.
+        double[] copyOfX = copy(x);
+        double[] copyOfY = copy(y);
+
         for(int i = 0; i < x.length; i++){
-            x[i] = x[i] * Math.cos(theta) - y[i] * Math.sin(theta);
-            y[i] = y[i] * Math.cos(theta) + x[i] * Math.sin(theta);
+            x[i] = copyOfX[i] * Math.cos(theta) - copyOfY[i] * Math.sin(theta);
+            y[i] = copyOfY[i] * Math.cos(theta) + copyOfX[i] * Math.sin(theta);
         }
     }
 
