@@ -76,7 +76,7 @@ public class PolygonTransform {
         // StdDraw.polygon(x, y);
         //rotating
         double theta = 45.0;
-        scale(x, y, theta);
+        rotate(x, y, theta);
         StdDraw.setPenColor(StdDraw.YELLOW);
         StdDraw.polygon(x, y);
     }
