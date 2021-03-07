@@ -52,6 +52,25 @@ public class PolygonTransform {
     // Tests each of the API methods by directly calling them. 
     public static void main(String[] args) {
 
-	// WRITE YOUR CODE HERE
+        StdDraw.setScale(-5.0, +5.0);
+        double[] x = { 0, 1, 1, 0 };
+        double[] y = { 0, 0, 2, 1 };
+        double alpha = 2.0;
+        StdDraw.setPenColor(StdDraw.RED);
+        StdDraw.polygon(x, y);
+        //scaling
+        scale(x, y, alpha);
+        StdDraw.setPenColor(StdDraw.BLUE);
+        StdDraw.polygon(x, y);
+        //translating
+        double dx = 2.0, dy = 1.0;
+        translate(x, y, dx, dy);
+        StdDraw.setPenColor(StdDraw.GREEN);
+        StdDraw.polygon(x, y);
+        //rotating
+        double theta = 45.0;
+        scale(x, y, theta);
+        StdDraw.setPenColor(StdDraw.PURPLE);
+        StdDraw.polygon(x, y);
     }
 }
