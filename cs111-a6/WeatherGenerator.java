@@ -37,7 +37,8 @@ public class WeatherGenerator {
         
         /*Setting up drywet and wetwet probabilities based on longitude latitude and month,
         by searching for that long / lat in arrays.*/
-        double drywetProbability, wetwetProbability;
+        double drywetProbability = 0;
+        double wetwetProbability = 0;
         for(int row = 0; row < drywet.length; row++){
             if(drywet[row][0] == longitude && drywet[row][1] == latitude){
                 drywetProbability = drywet[row][month];
