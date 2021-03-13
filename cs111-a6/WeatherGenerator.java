@@ -58,10 +58,20 @@ public class WeatherGenerator {
 
         for(int i = 1; i < forecastForMonth.length; i++){
             double rainDeterminant = StdRandom.uniform();
-
-            
-            if(forecastForMonth[i - 1] == DRY) 
+            if(forecastForMonth[i - 1] == DRY){
+                if(rainDeterminant <= drywetProbability)
+                    forecastForMonth[i] = WET;
+                else
+                    forecastForMonth[i] = forecastForMonth[i - 1];
+            } else {
+                if(rainDeterminant <= wetwetProbability)
+                    forecastForMonth[i] = forecastForMonth[i -1];
+                else
+                    forecastForMonth[i] = DRY;
+            }
         }
+
+        return forecastForMonth;
 
     }
 
