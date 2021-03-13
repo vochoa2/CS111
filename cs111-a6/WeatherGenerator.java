@@ -80,7 +80,15 @@ public class WeatherGenerator {
      */ 
     public static int numberOfWetDryDays (int[] forecast, int mode) {
         
-        // WRITE YOUR CODE HERE
+        int numberOfDays = 0;
+
+        for(int i = 0; i < forecast.length; i++){
+            if(forecast[i] == mode){
+                numberOfDays++;
+            }
+        }
+
+        return numberOfDays;
     }
 
     /*
@@ -88,7 +96,20 @@ public class WeatherGenerator {
      */ 
     public static int lengthOfLongestSpell (int[] forecast, int mode) {
 
-        // WRITE YOUR CODE HERE
+        int maxLengthOfSpell = 0;
+        int currentLenghtOfSpell = 0;
+
+        for(int i = 1; i < forecast.length; i++){
+            if(forecast[i - 1] == mode && forecast[i] == mode ){
+                currentLenghtOfSpell++;
+            } else {
+                if(currentLenghtOfSpell > maxLengthOfSpell)
+                    maxLengthOfSpell = currentLenghtOfSpell;
+                currentLenghtOfSpell = 0;
+            }
+        }
+        
+        return maxLengthOfSpell;
     }
 
     /*
