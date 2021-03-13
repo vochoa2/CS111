@@ -32,7 +32,37 @@ public class WeatherGenerator {
     public static int[] oneMonthGenerator(double longitude, double latitude, 
     int month, double[][] drywet, double[][] wetwet) {
 
-        // WRITE YOUR CODE HERE
+        //Subtract by 2 to account for fact that month is 2-13 while numberOfDaysInMonth goes from 0 - 11.
+        int[] forecastForMonth = new int[numberOfDaysInMonth[month - 2]];
+        
+        /*Setting up drywet and wetwet probabilities based on longitude latitude and month,
+        by searching for that long / lat in arrays.*/
+        double drywetProbability, wetwetProbability;
+        for(int row = 0; row < drywet.length; row++){
+            if(drywet[row][0] == longitude && drywet[row][1] == latitude){
+                drywetProbability = drywet[row][month];
+                wetwetProbability = wetwet[row][month];
+                break;
+            }
+        }
+
+        /*The first day has 50% chance of wet / dry
+        Set the first day then loop through for the rest of the days based on probability
+        SET ffM[0] = random(0-1);
+        FOR 1 TO numberOfDaysInMonth
+            Generate random from [0,1)
+            IF last day was wet use probability from wetwet array, and set to WET or DRY
+            ELSE IF last day was wet use probability from drywet array, and set to WET or DRY
+        return ffM array*/
+        forecastForMonth[0] = (StdRandom.uniform() >= 0.5) ? DRY : WET;
+
+        for(int i = 1; i < forecastForMonth.length; i++){
+            double rainDeterminant = StdRandom.uniform();
+
+            
+            if(forecastForMonth[i - 1] == DRY) 
+        }
+
     }
 
     /*
