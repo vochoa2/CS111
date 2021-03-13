@@ -98,7 +98,8 @@ public class WeatherGenerator {
     public static int lengthOfLongestSpell (int[] forecast, int mode) {
 
         int maxLengthOfSpell = 0;
-        int currentLenghtOfSpell = 0;
+        //The length will always be at least one, consecutive days add one more *unless* a month has 0 days of mode.
+        int currentLenghtOfSpell = 1;
 
         for(int i = 1; i < forecast.length; i++){
             if(forecast[i - 1] == mode && forecast[i] == mode ){
@@ -106,7 +107,7 @@ public class WeatherGenerator {
             } else {
                 if(currentLenghtOfSpell > maxLengthOfSpell)
                     maxLengthOfSpell = currentLenghtOfSpell;
-                currentLenghtOfSpell = 0;
+                currentLenghtOfSpell = 1;
             }
         }
         
