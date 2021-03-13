@@ -199,10 +199,16 @@ public class WeatherGenerator {
 
         int[] forecast = oneMonthGenerator(longitute, latitude, month, drywet, wetwet);
         int drySpell = lengthOfLongestSpell(forecast, DRY);
+        int dryDays = numberOfWetDryDays(forecast, DRY);
         int wetSpell = lengthOfLongestSpell(forecast, WET);
+        int wetDays = numberOfWetDryDays(forecast, WET);
 
         StdOut.println("There are " + forecast.length + " days in the forecast for month " + month);
+        StdOut.println(dryDays + " days of dry.");
         StdOut.println(drySpell + " days of dry spell.");
+        StdOut.println(wetDays + " days of wet.");
+        StdOut.println(wetSpell + " days of wet spell.");
+
 
         for ( int i = 0; i < forecast.length; i++ ) {
 
