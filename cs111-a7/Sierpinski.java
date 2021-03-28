@@ -44,9 +44,9 @@ public class Sierpinski {
 
         double y0 = y + height(length);
 
-        sierpinski(n - 1, x0, y, length/2);
-        sierpinski(n - 1, x1, y, length/2);
         sierpinski(n - 1, x, y0, length/2);
+        sierpinski(n - 1, x1, y, length/2);
+        sierpinski(n - 1, x0, y, length/2);
 
     }
 
