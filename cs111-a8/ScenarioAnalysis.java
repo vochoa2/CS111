@@ -58,7 +58,35 @@ public class ScenarioAnalysis {
      */
     public void computeCO2EmissionsAndCost () {
         
-        // WRITE YOUR CODE HERE
+        for(Vehicle vehicle : vehicles){
+            double totalMiles = (vehicle.getLease().getNumberOfMonths() / 12.0) * vehicle.getLease().getMileageAllowance();
+            
+            if(vehicle.getFuel().getType() == 1){
+                double milesPerGallon = vehicle.getFuel().getUsage();
+                double co2Emission = (totalMiles / milesPerGallon) * Fuel.CO2EMITTED_GASCOMBUSTION;
+                vehicle.setCO2Emission(co2Emission);
+
+                double fuelCost = totalMiles * gasPrice;
+                vehicle.setFuelCost(fuelCost);
+            } else {
+                double milesPerCharge = vehicle.getFuel().getUsage();
+                double kWhPerCharge = vehicle.getFuel().getKWhPerCharge();
+                double co2Emission = (((totalMiles / milesPerCharge) * kWhPerCharge) * (Fuel.CO2EMITTED_GENERATEmWh * (1/1000.0) * 0.45));
+                vehicle.setCO2Emission(co2Emission);
+
+                double milesPerkWh = milesPerCharge / kWhPerCharge;
+                double totalkWh  = totalMiles / milesPerkWh;
+                double fuelCost = totalkWh *  electricityPrice;
+                vehicle.setFuelCost(fuelCost);
+            }
+
+            Lease vehicleLease = vehicle.getLease();
+            double leaseCost = vehicleLease.getDueAtSigning() + vehicleLease.getMonthlyCost() * vehicleLease.getNumberOfMonths();
+
+            double totalCost = leaseCost + vehicle.getFuelCost() + vehicle.getOtherCost();
+
+            vehicle.setTotalCost(totalCost);
+        }
     }
 
     /*
@@ -99,9 +127,9 @@ public class ScenarioAnalysis {
             // Lease information
             double dueAtSigning  = StdIn.readDouble();
             int numberOfMonths = StdIn.readInt();
-            double montlyCost  = StdIn.readDouble();
+            double monthlyCost  = StdIn.readDouble();
             int mileageAllowance = StdIn.readInt();
-            Lease lease = new Lease(dueAtSigning,numberOfMonths,montlyCost,mileageAllowance);
+            Lease lease = new Lease(dueAtSigning,numberOfMonths,monthlyCost,mileageAllowance);
 
             // Fuel
             double usage = StdIn.readDouble();
